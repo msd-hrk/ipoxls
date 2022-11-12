@@ -8,6 +8,6 @@ class Config():
         """
         config.jsonから値を取得する
         """
-        config_path = "config/ipocc_config.json"
+        config_path = "conf/ipocc_config.json"
         config = json.load(open(config_path , "r"))
         self.mongo_url = config["MONGODB_URL"]  
