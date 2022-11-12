@@ -1,0 +1,3 @@
+{
+    "MONGODB_URL" : "mongodb+srv://flask:flask@cluster0.hrlio.mongodb.net/ipocc?retryWrites=true&w=majority"
+}
