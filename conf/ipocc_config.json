@@ -1,3 +1,4 @@
 {
-    "MONGODB_URL" : "mongodb+srv://flask:flask@cluster0.hrlio.mongodb.net/ipocc?retryWrites=true&w=majority"
+    "MONGODB_URL" : "mongodb+srv://flask:flask@cluster0.hrlio.mongodb.net/ipocc?retryWrites=true&w=majority",
+    "DRAW_CONF_PATH" : "draw.conf"
 }
