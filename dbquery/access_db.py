@@ -1,9 +1,9 @@
-from conf import Config
+from conf import config
 from datetime import timedelta
 from pymongo import MongoClient
 import datetime
 
-class accessDb():
+class AccessDb():
     """
     mongoDB接続クラス
 
@@ -21,7 +21,7 @@ class accessDb():
         """
         mongoDBクライアントを取得し、保持する
         """
-        conf = Config.Config()
+        conf = config.Config()
         self.client = MongoClient(conf.mongo_url)
         self.db = self.client.ipocc2
         self.collection = self.db.codelist2
@@ -55,7 +55,7 @@ class accessDb():
         data = self.collection.find({}, {"_id": 0})
         return data
     
-    def find_listed_data(self):
+    def get_secrities_num_list(self):
         """
         上場しているデータを返す
 
@@ -71,7 +71,8 @@ class accessDb():
         priceDiaryフィールドがない（上場廃止）したものも除外
         """
         BOUND_TIME = 22  # 境界時間
-        today = datetime.datetime.now()
+        # today = datetime.datetime.now()
+        today = datetime.datetime.now() - timedelta(days=150)
         target_date = 0
         if today.hour >= BOUND_TIME:
             # 起動時間が境界時間を超えている場合
@@ -85,25 +86,10 @@ class accessDb():
                 "listingDate":{'$lte':target_date},
                 "priceDiary":{'$exists':True}
             },
-            # {
-            #     "_id": 0,
-            #     "company": 1,
-            #     "web": 1,
-            #     "initPriceSellProfit": 1,
-            #     "capital": 1,
-            #     "business": 1,
-            #     "category": 1,
-            #     "build": 1,
-            #     "employee": 1,
-            #     "grade": 1,
-            #     "priceDiary": 1,
-            #     "pubOfferPrice": 1,
-            # }
+            {
+                "_id": 0,
+                "securitiesNo": 1,
+            }
         )
-        result=[]
-        append = result.append
-        
-        for dt in data:
-            append(dt)
 
-        return result
+        return data

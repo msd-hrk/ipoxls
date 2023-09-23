@@ -4,3 +4,4 @@ dbquery/__pycache__
 draw/__pycache__
 draw.conf
 *.xlsx
+docs/*

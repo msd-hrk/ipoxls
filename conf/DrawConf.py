@@ -1,5 +1,5 @@
-from conf.Config import Config
-from common.ctrlStr import CtrlStr
+from conf.config import Config
+from common.ctrl_str import CtrlStr
 class DrawConf():
     
     def __init__(self) -> None:

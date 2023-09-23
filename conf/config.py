@@ -12,3 +12,4 @@ class Config():
         config = json.load(open(config_path , "r"))
         self.mongo_url = config["MONGODB_URL"]  
         self.draw_conf_path = config["DRAW_CONF_PATH"]  
+        self.output_xlsx_file_path = config["OUTPUT_XLSX_FILE_PATH"]
